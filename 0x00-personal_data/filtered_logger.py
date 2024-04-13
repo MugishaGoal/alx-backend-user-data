@@ -66,8 +66,8 @@ def main():
                 lambda x: '{}={}'.format(x[0], x[1]),
                 zip(columns, row),
             )
-            message = '{};'.format('; '.join(list(record)))
-            args = ("user_data", logging.INFO, None, None, message, None, None)
+            mes = '{};'.format('; '.join(list(record)))
+            args = ("user_data", logging.INFO, None, None, mes, None, None)
             log_record = logging.LogRecord(*args)
             info_logger.handle(log_record)
 
@@ -86,8 +86,8 @@ class RedactingFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         """Formats LogRecord"""
-        message = super(RedactingFormatter, self).format(record)
-        text = filter_datum(self.fields, self.REDACTION, message, self.SEPARATOR)
+        mes = super(RedactingFormatter, self).format(record)
+        text = filter_datum(self.fields, self.REDACTION, mes, self.SEPARATOR)
         return text
 
 
