@@ -36,3 +36,17 @@ class DB:
         self._session.add(user)
         self._session.commit()
         return user
+
+    def filter_usr_by(self, **kwargs) -> User:
+        """Find a user in the database by the given keyword arguments"""
+        try:
+            user = self._session.query(User).filter_by(**kwargs).first()
+            if user is None:
+                raise NoResultFound
+            return user
+        except InvalidRequestError as e:
+            self._session.rollback()
+            raise e
+        except NoResultFound as e:
+            self._session.rollback()
+            raise e
