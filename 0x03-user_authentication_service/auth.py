@@ -36,5 +36,5 @@ class Auth:
             # Create a new user object
             user = User(email=email, hashed_password=hashed_password)
             # Add the user to the database
-            self._db.add_user(user)
+            self._db.add_user(email=email, hashed_password=hashed_password)
             return user
