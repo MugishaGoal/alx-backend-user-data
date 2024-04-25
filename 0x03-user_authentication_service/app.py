@@ -15,7 +15,7 @@ def welcome():
     return jsonify({"message": "Bienvenue"})
 
 
-@app.route("/users", method=["POST"])
+@app.route("/users", methods=["POST"])
 def users() -> str:
     """POST /users"""
     email = request.form.get("email")
