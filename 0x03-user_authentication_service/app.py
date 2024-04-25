@@ -7,7 +7,7 @@ from auth import Auth
 
 
 app = Flask(__name__)
-AUTH =Auth()
+AUTH = Auth()
 
 
 @app.route("/")
